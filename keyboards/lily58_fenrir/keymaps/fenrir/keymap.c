@@ -29,7 +29,7 @@ const key_override_t lbrc_key_override = ko_make_with_layers_and_negmods(0, KC_L
 const key_override_t rbrc_key_override = ko_make_with_layers_and_negmods(0, KC_RBRC, JP_RBRC, ~0, (uint8_t) MOD_MASK_SHIFT);  // ]
 const key_override_t bsls_key_override = ko_make_with_layers_and_negmods(0, KC_BSLS, JP_BSLS, ~0, (uint8_t) MOD_MASK_SHIFT);  // (backslash)
 const key_override_t quot_key_override = ko_make_with_layers_and_negmods(0, KC_QUOT, JP_QUOT, ~0, (uint8_t) MOD_MASK_SHIFT);  // '
-const key_override_t grv_key_override = ko_make_with_layers_and_negmods(0, KC_GRV, JP_GRV, ~0, (uint8_t) MOD_MASK_SHIFT);     // `
+const key_override_t grv_key_override = ko_make_with_layers_and_negmods(0, KC_GRV, JP_GRV, 1 << 0, (uint8_t) MOD_MASK_SHIFT);     // `
 
 const key_override_t **key_overrides = (const key_override_t *[]){
     &at_key_override,
@@ -85,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |   `  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   -  |
+ * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |   ~  |
  * |------+------+------+------+------+------|   (   |    |    )  |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |   _  |   +  |   {  |   }  |   \  |
+ * |      |      |      |      |      |      |-------|    |-------|      |   _  |   +  |      |      |   \  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE | DEL  | CAD  |
  *                   |      |      |      |/       /         \      \ |      |      |      |
@@ -96,8 +96,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_LOWER] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______, _______,
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_TILD,
-  _______, _______, _______, _______, _______, _______, KC_LPRN, KC_RPRN, XXXXXXX, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_BSLS,
+  _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, KC_TILD,
+  _______, _______, _______, _______, _______, _______, s(KC_9), s(KC_0), XXXXXXX, KC_UNDS, KC_PLUS, XXXXXXX, XXXXXXX, KC_BSLS,
                              _______, _______, _______, _______, _______,  _______, KC_DEL, LALT(LCTL(KC_DEL))
 ),
 /* RAISE
